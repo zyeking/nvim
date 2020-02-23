@@ -69,6 +69,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jiangmiao/auto-pairs'
+Plug 'preservim/nerdtree'
 call plug#end()
 
 color gruvbox
@@ -113,10 +114,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
 
 " Compile function
 noremap r :call CompileRunGcc()<CR>
@@ -155,3 +152,13 @@ func! CompileRunGcc()
 		:term go run %
 	endif
 endfunc
+
+"""
+" startify
+"""
+let g:startify_custom_footer = [
+            \ '+------------------------------+',
+            \ '|     哈哈哈哈哈哈哈哈哈哈哈哈 |',
+            \ '+----------------+-------------+',
+            \]
+
