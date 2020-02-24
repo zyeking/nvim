@@ -71,9 +71,36 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 call plug#end()
 
 color gruvbox
+
+"""
+" input
+"""
+
+let g:input_toggle = 1
+function! Fcitx2en()
+   let s:input_status = system("fcitx-remote")
+   if s:input_status == 2
+      let g:input_toggle = 1
+      let l:a = system("fcitx-remote -c")
+   endif
+endfunction
+
+function! Fcitx2zh()
+   let s:input_status = system("fcitx-remote")
+   if s:input_status != 2 && g:input_toggle == 1
+      let l:a = system("fcitx-remote -o")
+      let g:input_toggle = 0
+   endif
+endfunction
+
+set timeoutlen=150
+autocmd InsertLeave * call Fcitx2en()
+"autocmd InsertEnter * call Fcitx2zh()
+
 
 """
 " coc
@@ -166,9 +193,9 @@ let g:startify_custom_footer = [
 """
 " nerdtree
 """
-" 关闭NERDTree快捷键
-map <leader>t :NERDTreeToggle<CR>
-""当NERDTree为剩下的唯一窗口时自动关闭
+" 开启/关闭NERDTree快捷键
+map <C-f> :NERDTreeToggle<CR>
+"当NERDTree为剩下的唯一窗口时自动关闭
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 ""修改树的显示图标
 let g:NERDTreeDirArrowExpandable = '►'
@@ -186,3 +213,50 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Clean"     : "✔︎",
     \ "Unknown"   : "?"
     \ }
+
+"""
+" Nerdtree-syntax-highlight
+"""
+""""""""""""""""""""""""""""""
+"vim-nerdtree-syntax-highlight settings
+""""""""""""""""""""""""""""""
+"Highlight full name (not only icons). You need to add this if you don't have vim-devicons and want highlight.
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+
+"Highlight full name (not only icons). You need to add this if you don't have vim-devicons and want highlight.
+let g:NERDTreeHighlightFolders = 1
+
+"highlights the folder name
+let g:NERDTreeHighlightFoldersFullName = 1
+
+"you can add these colors to your .vimrc to help customizing
+let s:brown = "905532"
+let s:aqua =  "3AFFDB"
+let s:blue = "689FB6"
+let s:darkBlue = "44788E"
+let s:purple = "834F79"
+let s:lightPurple = "834F79"
+let s:red = "AE403F"
+let s:beige = "F5C06F"
+let s:yellow = "F09F17"
+let s:orange = "D4843E"
+let s:darkOrange = "F16529"
+let s:pink = "CB6F6F"
+let s:salmon = "EE6E73"
+let s:green = "8FAA54"
+let s:Turquoise = "40E0D0"
+let s:lightGreen = "31B53E"
+let s:white = "FFFFFF"
+let s:rspec_red = "FE405F"
+let s:git_orange = "F54D27"
+let s:gray = "808A87"
+
+let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
+let g:NERDTreeExtensionHighlightColor['o'] = s:gray " sets the color of o files to blue
+let g:NERDTreeExtensionHighlightColor['h'] = s:blue " sets the color of h files to blue
+let g:NERDTreeExtensionHighlightColor['c'] = s:green " sets the color of c files to blue
+let g:NERDTreeExtensionHighlightColor['cpp'] = s:green " sets the color of cpp files to blue
+let g:NERDTreeExtensionHighlightColor['go'] = s:green " sets the color of c++ files to blue
+
