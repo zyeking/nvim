@@ -101,6 +101,10 @@ set timeoutlen=150
 autocmd InsertLeave * call Fcitx2en()
 "autocmd InsertEnter * call Fcitx2zh()
 
+"""
+" vim-go
+"""
+let g:go_fmt_command = "goimports"
 
 """
 " coc
