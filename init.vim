@@ -31,15 +31,16 @@ set smartcase
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
+noremap s <nop>
 map sl :set splitright<CR>:vsplit<CR>
 map sj :set nosplitright<CR>:vsplit<CR>
 map si :set nosplitbelow<CR>:split<CR>
 map sk :set splitbelow<CR>:split<CR>
 
-map <LEADER>j <C-w>h 
-map <LEADER>i <C-w>j
-map <LEADER>k <C-w>k
-map <LEADER>l <C-w>l
+map zj <C-w>h 
+map zk <C-w>j
+map zi <C-w>k
+map zl <C-w>l
 
 map <up> :res +5<CR>
 map <down> :res -5<CR>
@@ -72,6 +73,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'honza/vim-snippets'
 call plug#end()
 
 color gruvbox
@@ -105,6 +107,7 @@ autocmd InsertLeave * call Fcitx2en()
 " vim-go
 """
 let g:go_fmt_command = "goimports"
+let g:go_def_mapping_enabled = 1
 
 """
 " coc
