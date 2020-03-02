@@ -74,6 +74,9 @@ Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'honza/vim-snippets'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 call plug#end()
 
 color gruvbox
@@ -288,3 +291,32 @@ let g:NERDTreeExtensionHighlightColor['c'] = s:green " sets the color of c files
 let g:NERDTreeExtensionHighlightColor['cpp'] = s:green " sets the color of cpp files to blue
 let g:NERDTreeExtensionHighlightColor['go'] = s:green " sets the color of c++ files to blue
 
+"""
+" Markdown
+"""
+set conceallevel=2
+let g:vim_markdown_toc_autofit = 1
+let g:vim_markdown_fenced_languages = ['golang=gl']
+let g:vim_markdown_autowrite = 1
+
+"""
+" MarkdownPreview
+"""
+let g:mkdp_preview_options = {
+    \ 'mkit': {},
+    \ 'katex': {},
+    \ 'uml': {},
+    \ 'maid': {},
+    \ 'disable_sync_scroll': 0,
+    \ 'sync_scroll_type': 'middle',
+    \ 'hide_yaml_meta': 1,
+    \ 'sequence_diagrams': {},
+    \ 'flowchart_diagrams': {}
+    \ }
+" nmap <C-s> <Plug>MarkdownPreview
+" nmap <M-s> <Plug>MarkdownPreviewStop
+" nmap <C-p> <Plug>MarkdownPreviewToggle
+let g:mkdp_auto_start = 0
+let g:mkdp_auto_close = 1
+let g:mkdp_command_for_global = 0
+let g:mkdp_browserfunc = ''
