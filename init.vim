@@ -79,8 +79,12 @@ Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 call plug#end()
 
+"""
+" dress up
+"""
 color gruvbox
-
+" depends on the terminal transparent
+hi Normal ctermfg=252 ctermbg=none
 """
 " input
 """
@@ -320,3 +324,4 @@ let g:mkdp_auto_start = 0
 let g:mkdp_auto_close = 1
 let g:mkdp_command_for_global = 0
 let g:mkdp_browserfunc = ''
+
