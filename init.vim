@@ -13,7 +13,8 @@ set shiftwidth=4
 set softtabstop=4
 
 set list
-set listchars=tab:>-,trail:-
+" set listchars=tab:>-,trail:。
+set listchars=tab:\|\ ,trail:▫
 
 set autochdir
 set nocompatible
@@ -31,13 +32,13 @@ set smartcase
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-noremap s <nop>
+" noremap s <nop>
 map sl :set splitright<CR>:vsplit<CR>
 map sj :set nosplitright<CR>:vsplit<CR>
 map si :set nosplitbelow<CR>:split<CR>
 map sk :set splitbelow<CR>:split<CR>
 
-map zj <C-w>h 
+map zj <C-w>h
 map zk <C-w>j
 map zi <C-w>k
 map zl <C-w>l
@@ -85,10 +86,10 @@ call plug#end()
 color gruvbox
 " depends on the terminal transparent
 hi Normal ctermfg=252 ctermbg=none
+
 """
 " input
 """
-
 let g:input_toggle = 1
 function! Fcitx2en()
    let s:input_status = system("fcitx-remote")
