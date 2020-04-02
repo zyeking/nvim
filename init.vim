@@ -30,6 +30,8 @@ set incsearch
 set ignorecase
 set smartcase
 
+set updatetime=100
+
 " set termguicolors
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -81,6 +83,8 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'hail2u/vim-css3-syntax', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-commentary'
 call plug#end()
 
 """
