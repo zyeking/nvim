@@ -85,6 +85,9 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'hail2u/vim-css3-syntax', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-commentary'
+Plug 'junegunn/fzf.vim'
+Plug 'lfv89/vim-interestingwords'
+Plug 'voldikss/vim-translator'
 call plug#end()
 
 """
@@ -336,3 +339,16 @@ let g:mkdp_auto_close = 1
 let g:mkdp_command_for_global = 0
 let g:mkdp_browserfunc = ''
 
+"""
+" fzf.vim
+"""
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', 'cat {}']}, <bang>0)
+
+"""
+" vim-translator
+"""
+" Leader>w 翻译光标下的文本，在窗口中显示
+nmap <silent> <Leader>w <Plug>TranslateW
+vmap <silent> <Leader>w <Plug>TranslateWV
+let g:translator_default_engines=['bing','youdao']
